@@ -1,0 +1,22 @@
+name: golden_goose_journal
+description: A local-first journal that combines budgeting and growth notes.
+version: 0.1.0+1
+publish_to: "none"
+
+environment:
+  sdk: ">=2.19.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  path: ^1.9.0
+  sqflite: ^2.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
