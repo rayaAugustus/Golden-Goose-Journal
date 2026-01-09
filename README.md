@@ -1,2 +1,16 @@
-# Golden-Goose-Journal
-市面上的软件大多把“记账/理财”和“个人成长/日记”分开做了，但《小狗钱钱》的核心逻辑恰恰是：理财先理心，财富是自信和行动力的副产品。
+# golden_goose_journal
+
+A new Flutter project.
+
+## Getting Started
+
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
