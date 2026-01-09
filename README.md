@@ -1,16 +1,271 @@
-# golden_goose_journal
+# 金鹅日记 (Golden Goose Journal)
 
-A new Flutter project.
+一个基于《小狗钱钱》理念的成长型行动管理应用，通过成功日记和72小时挑战驱动行动，连接梦想与储蓄。
 
-## Getting Started
+## 📱 产品特色
 
-This project is a starting point for a Flutter application.
+### 核心功能
 
-A few resources to get you started if this is your first Flutter project:
+1. **成功日记** 📖
+   - 每日记录3个成功（小事也算）
+   - 连续打卡天数统计
+   - 成功回顾抽卡功能
+   - 心情记录和标签分类
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+2. **72小时挑战** 🎯
+   - 任何想法必须在72小时内推进一个最小动作
+   - 智能倒计时提醒（24h、1h）
+   - 挑战模板快速创建
+   - 完成后一句话复盘
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+3. **梦想相册** ✨
+   - 可视化梦想管理
+   - 目标金额和日期设定
+   - 进度条实时展示
+   - 梦想理由记录
+
+4. **梦想储蓄罐** 💰
+   - 仪式感存入体验
+   - 快捷金额选择
+   - 存入来源分类
+   - 存入记录追踪
+
+5. **今日页整合** 🏠
+   - 一站式查看所有进展
+   - 连续行动天数展示
+   - 快捷操作入口
+   - 智能引导流程
+
+## 🎨 设计理念
+
+- **温暖金色系主题**：呼应"金鹅"概念，传递温暖和希望
+- **鼓励式文案**：避免羞辱式提醒，强调"小事也算"
+- **渐进式引导**：日记→挑战→存入，自然过渡
+- **情绪锚点**：通过成功回顾在低谷时重建信心
+
+## 🛠️ 技术栈
+
+- **框架**: Flutter 3.10+
+- **状态管理**: Provider
+- **本地存储**: SQLite (sqflite)
+- **数据加密**: encrypt
+- **本地通知**: flutter_local_notifications
+- **UI字体**: Google Fonts (Nunito)
+- **图片选择**: image_picker
+
+## 📦 项目结构
+
+```
+lib/
+├── config/              # 配置文件
+│   ├── theme.dart      # 主题配置
+│   └── constants.dart  # 常量定义
+├── models/             # 数据模型
+│   ├── journal_entry.dart
+│   ├── challenge.dart
+│   ├── dream.dart
+│   └── deposit.dart
+├── services/           # 服务层
+│   ├── database_service.dart
+│   └── notification_service.dart
+├── providers/          # 状态管理
+│   ├── journal_provider.dart
+│   ├── challenge_provider.dart
+│   └── dream_provider.dart
+├── pages/              # 页面
+│   ├── home_page.dart
+│   ├── main_navigation.dart
+│   ├── journal/
+│   │   ├── journal_list_page.dart
+│   │   └── write_journal_page.dart
+│   ├── challenge/
+│   │   ├── challenge_list_page.dart
+│   │   └── create_challenge_page.dart
+│   └── dream/
+│       ├── dream_list_page.dart
+│       ├── create_dream_page.dart
+│       └── deposit_dialog.dart
+└── main.dart           # 应用入口
+```
+
+## 🚀 快速开始
+
+### 环境要求
+
+- Flutter SDK: 3.10.4 或更高版本
+- Dart SDK: 3.10.4 或更高版本
+- Android Studio / VS Code
+- iOS: Xcode 14+ (仅iOS开发)
+
+### 安装步骤
+
+1. **克隆项目**
+```bash
+git clone <repository-url>
+cd golden_goose_journal
+```
+
+2. **安装依赖**
+```bash
+flutter pub get
+```
+
+3. **运行应用**
+```bash
+# Android
+flutter run
+
+# iOS
+flutter run -d ios
+
+# Web
+flutter run -d chrome
+```
+
+### 构建发布版本
+
+```bash
+# Android APK
+flutter build apk --release
+
+# Android App Bundle
+flutter build appbundle --release
+
+# iOS
+flutter build ios --release
+```
+
+## 📊 数据库设计
+
+### 表结构
+
+1. **journal_entries** - 成功日记
+   - id, date, success1-3, mood, tags, todayLearned, tomorrowAction
+
+2. **challenges** - 72小时挑战
+   - id, title, minimalAction, deadline, dreamId, status, completionEvidence, reflection
+
+3. **dreams** - 梦想
+   - id, title, imagePath, targetAmount, targetDate, reason, currentAmount
+
+4. **deposits** - 存入记录
+   - id, dreamId, amount, source, note, createdAt
+
+## 🎯 核心流程
+
+### 每日主流程
+1. 打开App → 今日页
+2. 写成功日记（3条）
+3. 完成后提示创建72h挑战
+4. 挑战倒计时开始
+
+### 挑战完成流程
+1. 收到提醒通知
+2. 填写完成证据
+3. 一句话复盘
+4. 提示存入梦想罐
+
+### 低谷救援流程
+1. 点击成功回顾
+2. 随机展示历史成功
+3. 引导创建新挑战
+
+## 📱 功能特性
+
+### MVP阶段 (P0)
+- ✅ 成功日记（每日3条）
+- ✅ 连续打卡统计
+- ✅ 72小时挑战
+- ✅ 挑战提醒（24h、1h）
+- ✅ 梦想相册
+- ✅ 梦想储蓄罐
+- ✅ 今日页整合
+- ✅ 成功回顾抽卡
+
+### 后续规划 (P1)
+- ⏳ 数据云同步
+- ⏳ 数据导出功能
+- ⏳ 更多提醒时间选项
+- ⏳ 挑战图片证据
+- ⏳ 梦想达成庆祝动画
+- ⏳ 统计报表
+
+## 🎨 UI/UX 亮点
+
+1. **温暖配色**
+   - 主色：金色系 (#FFB84D)
+   - 辅助色：橙红色 (#FF6B6B)
+   - 成功色：青绿色 (#4ECDC4)
+
+2. **动画效果**
+   - 页面切换动画
+   - 完成庆祝动画
+   - 进度条动画
+
+3. **交互细节**
+   - 快捷示例填充
+   - 快捷金额选择
+   - 拖拽式底部弹窗
+   - 下拉刷新
+
+## 📝 开发规范
+
+### 代码风格
+- 遵循 Dart 官方代码规范
+- 使用 flutter_lints 进行代码检查
+- 组件化开发，提高复用性
+
+### 命名规范
+- 文件名：snake_case
+- 类名：PascalCase
+- 变量/方法：camelCase
+- 常量：UPPER_SNAKE_CASE
+
+### Git 提交规范
+- feat: 新功能
+- fix: 修复bug
+- docs: 文档更新
+- style: 代码格式调整
+- refactor: 重构
+- test: 测试相关
+- chore: 构建/工具相关
+
+## 🐛 已知问题
+
+- [ ] 图片选择在某些Android设备上可能需要权限配置
+- [ ] iOS通知需要在Info.plist中配置权限
+- [ ] Web版本暂不支持本地通知
+
+## 🤝 贡献指南
+
+欢迎提交 Issue 和 Pull Request！
+
+1. Fork 本仓库
+2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 开启 Pull Request
+
+## 📄 许可证
+
+本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
+
+## 👥 团队
+
+- **产品设计**: Raya
+- **开发**: [Your Name]
+
+## 📞 联系方式
+
+- Issue: [GitHub Issues](https://github.com/your-repo/issues)
+- Email: your-email@example.com
+
+## 🙏 致谢
+
+- 灵感来源：《小狗钱钱》by 博多·舍费尔
+- UI设计参考：Material Design 3
+- 社区支持：Flutter中文社区
+
+---
+
+**让每一天都看到自己的进步！** 🌟
